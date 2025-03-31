@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construction Connect - Worker Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo h1 {
+            color: #2c3e50;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .logo p {
+            color: #7f8c8d;
+            font-size: 16px;
+        }
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .form-section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        .form-section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            color: #2c3e50;
+            font-size: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title i {
+            color: #3498db;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+        }
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .submit-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-button:hover {
+            text-decoration: underline;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .skill-item {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .skill-item input[type="checkbox"] {
+            width: auto;
+        }
+        .work-history-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .work-history-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #eee;
+        }
+        .work-history-item label {
+            display: block;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+        .work-history-item input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .certification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .certification-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #eee;
+        }
+        .certification-item label {
+            display: block;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+        .certification-item input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>Construction Connect</h1>
+            <p>Worker Profile</p>
+        </div>
+        
+        <div class="form-container">
+            <form id="workerForm" onsubmit="return handleWorkerSubmit(event)">
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-user"></i>
+                        Personal Information
+                    </h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-tools"></i>
+                        Trade & Skills
+                    </h2>
+                    <div class="form-group">
+                        <label for="trade">Primary Trade</label>
+                        <select id="trade" name="trade" required>
+                            <option value="">Select Trade</option>
+                            <option value="carpenter">Carpenter</option>
+                            <option value="mason">Mason</option>
+                            <option value="electrician">Electrician</option>
+                            <option value="plumber">Plumber</option>
+                            <option value="painter">Painter</option>
+                            <option value="welder">Welder</option>
+                            <option value="laborer">General Laborer</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experience">Years of Experience</label>
+                        <input type="number" id="experience" name="experience" min="0" required>
+                    </div>
+
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <input type="checkbox" id="skill1" name="skills" value="framing">
+                            <label for="skill1">Framing</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox" id="skill2" name="skills" value="concrete">
+                            <label for="skill2">Concrete Work</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox" id="skill3" name="skills" value="electrical">
+                            <label for="skill3">Electrical</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox" id="skill4" name="skills" value="plumbing">
+                            <label for="skill4">Plumbing</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox" id="skill5" name="skills" value="finishing">
+                            <label for="skill5">Finishing Work</label>
+                        </div>
+                        <div class="skill-item">
+                            <input type="checkbox" id="skill6" name="skills" value="heavy-equipment">
+                            <label for="skill6">Heavy Equipment</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-certificate"></i>
+                        Certifications
+                    </h2>
+                    <div class="certification-grid">
+                        <div class="certification-item">
+                            <label>OSHA Certification</label>
+                            <input type="text" placeholder="OSHA certification number">
+                        </div>
+                        <div class="certification-item">
+                            <label>Trade Certification</label>
+                            <input type="text" placeholder="Trade certification number">
+                        </div>
+                        <div class="certification-item">
+                            <label>Safety Training</label>
+                            <input type="text" placeholder="Safety training details">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-briefcase"></i>
+                        Work History
+                    </h2>
+                    <div class="work-history-grid">
+                        <div class="work-history-item">
+                            <label>Previous Company</label>
+                            <input type="text" placeholder="Company name">
+                        </div>
+                        <div class="work-history-item">
+                            <label>Position</label>
+                            <input type="text" placeholder="Job title">
+                        </div>
+                        <div class="work-history-item">
+                            <label>Duration</label>
+                            <input type="text" placeholder="e.g., 2 years">
+                        </div>
+                        <div class="work-history-item">
+                            <label>Responsibilities</label>
+                            <input type="text" placeholder="Key responsibilities">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-clock"></i>
+                        Availability
+                    </h2>
+                    <div class="form-group">
+                        <label for="availability">Work Availability</label>
+                        <select id="availability" name="availability" required>
+                            <option value="">Select Availability</option>
+                            <option value="full-time">Full Time</option>
+                            <option value="part-time">Part Time</option>
+                            <option value="contract">Contract Basis</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="location">Preferred Work Location</label>
+                        <input type="text" id="location" name="location" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="references">References</label>
+                        <textarea id="references" name="references" placeholder="Please provide contact information for professional references."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Profile</button>
+            </form>
+            
+            <div style="text-align: center;">
+                <a href="role-selection.html" class="back-button">← Back to Role Selection</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        function handleWorkerSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for submitting your profile! We will review and contact you soon.');
+            return false;
+        }
+    </script>
+</body>
+</html> 

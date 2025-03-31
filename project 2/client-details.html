@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construction Connect - Client Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo h1 {
+            color: #2c3e50;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .logo p {
+            color: #7f8c8d;
+            font-size: 16px;
+        }
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .form-section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        .form-section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            color: #2c3e50;
+            font-size: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title i {
+            color: #3498db;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+        }
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .submit-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-button:hover {
+            text-decoration: underline;
+        }
+        .project-requirements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .requirement-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #eee;
+        }
+        .requirement-item label {
+            display: block;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+        .requirement-item input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>Construction Connect</h1>
+            <p>Project Details Form</p>
+        </div>
+        
+        <div class="form-container">
+            <form id="clientForm" onsubmit="return handleClientSubmit(event)">
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-user"></i>
+                        Personal Information
+                    </h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-building"></i>
+                        Project Details
+                    </h2>
+                    <div class="form-group">
+                        <label for="projectType">Project Type</label>
+                        <select id="projectType" name="projectType" required>
+                            <option value="">Select Project Type</option>
+                            <option value="residential">Residential</option>
+                            <option value="commercial">Commercial</option>
+                            <option value="industrial">Industrial</option>
+                            <option value="infrastructure">Infrastructure</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="budget">Budget Range</label>
+                        <select id="budget" name="budget" required>
+                            <option value="">Select Budget Range</option>
+                            <option value="small">$10,000 - $50,000</option>
+                            <option value="medium">$50,000 - $200,000</option>
+                            <option value="large">$200,000 - $1,000,000</option>
+                            <option value="enterprise">$1,000,000+</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="location">Project Location</label>
+                        <input type="text" id="location" name="location" required>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-clipboard-list"></i>
+                        Project Requirements
+                    </h2>
+                    <div class="project-requirements">
+                        <div class="requirement-item">
+                            <label>Timeline</label>
+                            <input type="text" placeholder="e.g., 6 months" required>
+                        </div>
+                        <div class="requirement-item">
+                            <label>Project Size</label>
+                            <input type="text" placeholder="e.g., 2000 sq ft" required>
+                        </div>
+                        <div class="requirement-item">
+                            <label>Number of Floors</label>
+                            <input type="number" min="1" required>
+                        </div>
+                        <div class="requirement-item">
+                            <label>Special Requirements</label>
+                            <input type="text" placeholder="e.g., LEED certified">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-comment-alt"></i>
+                        Additional Details
+                    </h2>
+                    <div class="form-group">
+                        <label for="description">Project Description</label>
+                        <textarea id="description" name="description" placeholder="Please provide detailed information about your project requirements, goals, and any specific features you'd like to include." required></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Project Details</button>
+            </form>
+            
+            <div style="text-align: center;">
+                <a href="role-selection.html" class="back-button">← Back to Role Selection</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        function handleClientSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for submitting your project details! We will contact you soon.');
+            return false;
+        }
+    </script>
+</body>
+</html> 
